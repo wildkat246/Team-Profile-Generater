@@ -26,6 +26,6 @@ const team = [
     }
 ];
 
-fs.writeFileSync(outputPath, render (tema), "utf-8");
+fs.writeFileSync(outputPath, render(team), "utf-8");
 
 
