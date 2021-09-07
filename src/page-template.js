@@ -1,3 +1,5 @@
+const internal = require("stream");
+
 const generateTeam = team => {
     const generateManager = manager => {
         return `
@@ -21,9 +23,46 @@ const generateTeam = team => {
         `;
     };
 
-    const htmlArr = [generateManager(team[0]), generateEngineer(team[1])];
+    const generateIntern = (intern) => {
+        return `
+        <h2 class="card-title">${intern.name}</h2>
+        <ul class="list-group">
+                <li class="list-group-item">ID: ${intern.id}</li>
+                <li class="list-group-item">Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
+                
+        </ul>
+        `;
+    };
 
-    return htmlArr.join("");
+    const htmlArr = []
+
+    // const htmlArr = [
+        // generateManager(team[0]), 
+        // generateEngineer(team[1]), 
+        // generateEngineer(team[2])];
+
+    htmlArr.push(
+        team
+            .filter((employee) => employee.role === 'manager')
+            .map((manager) => generateManager(manager))
+            .join("")
+        );
+    
+    htmlArr.push(
+        team
+            .filter((employee) => employee.role === 'engineer')
+            .map((engineer) => generateEngineer(engineer))
+            .join("")
+        );
+
+        htmlArr.push(
+            team
+                .filter((employee) => employee.role === 'intern')
+                .map((intern) => generateEngineer(intern))
+                .join("")
+            );  
+
+        return htmlArr.join("");
 };
 
 module.exports = team => {

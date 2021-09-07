@@ -1,4 +1,6 @@
 const render = require("./src/page-template.js");
+const fs = require("fs");
+const path = require("path");
 const team = [
     {
         name: "Blake",
