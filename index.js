@@ -1,6 +1,9 @@
 const render = require("./src/page-template.js");
 const fs = require("fs");
 const path = require("path");
+const Engineer = require("./Employee");
+const Intern = require("./Employee");
+const Manager = require("./Employee");
 
 const OUTPUT_DIR = path.resolve(__dirname, "dist")
 const outputPath = path.join(OUTPUT_DIR, "index.html");
